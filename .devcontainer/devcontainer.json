@@ -1,9 +1,24 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/cpp
 {
-	"name": "C++",
-	"build": {
-		"dockerfile": "Dockerfile"
+	"name": "Petalinux",
+	"image": "Petalinux-${localEnv:USER}:${localWorkspaceFolderBasename}",
+	"remoteUser": "${localEnv:USER}",
+	"containerUser": "${localEnv:USER}",
+	"initializeCommand": "${localWorkspaceFolder}/.devcontainer/initializeCommand.sh",
+	"containerEnv": {
+		"USER": "${localEnv:USER}",
+		"REPOSITORY_HOST_PATH": "${localWorkspaceFolder}"
+	},
+	"customizations": {
+		"vscode": {
+			// Feel free to add more extensions here. 
+			// Extension identifiers can be found on the right side of an extension page
+			"extensions": [
+				"ms-vscode.cpptools",
+				"fireblackhat.conan-tools",
+				"mshr-h.veriloghdl"]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
