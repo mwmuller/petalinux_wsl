@@ -96,7 +96,7 @@ if [ $hostOS == "ubuntu" ]; then
 		echo "FOUND!"; 
 	else 
 		echo "NOT FOUND! Now adding i386 foreign archiecture to dpkg";
-		sudo dpkg --add-architexture i386; 
+		sudo dpkg --add-architecture i386; 
 	fi;
 fi;
 

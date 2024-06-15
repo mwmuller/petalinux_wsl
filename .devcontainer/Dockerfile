@@ -15,7 +15,8 @@ ENV \
      # some packages will require this to be set. You can change this a rebuild
      # the image is needed
      TZ="America/Detroit"
-# [Optional] Uncomment this section to install additional packages.
+
+# Installing majority of packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      && apt-get -y install --no-install-recommends \
      git \
@@ -24,7 +25,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      nano \
      vim \
      libtinfo5
-
 
 # Create the user
  RUN if getent passwd $USER_UID > /dev/null; then userdel -r $(getent passwd $USER_UID | cut -d ':' -f 1); fi \ 
