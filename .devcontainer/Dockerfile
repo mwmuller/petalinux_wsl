@@ -24,7 +24,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      sudo \
      nano \
      vim \
-     libtinfo5
+     libtinfo5 \
+     ca-certificates
 
 # Create the user
  RUN if getent passwd $USER_UID > /dev/null; then userdel -r $(getent passwd $USER_UID | cut -d ':' -f 1); fi \ 
