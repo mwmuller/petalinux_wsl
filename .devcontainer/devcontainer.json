@@ -2,13 +2,13 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/cpp
 {
 	"name": "Petalinux",
-	"image": "Petalinux-${localEnv:USER}:${localWorkspaceFolderBasename}",
-	"remoteUser": "${localEnv:USER}",
-	"containerUser": "${localEnv:USER}",
-	"initializeCommand": "${localWorkspaceFolder}/.devcontainer/initializeCommand.sh",
-	"containerEnv": {
-		"USER": "${localEnv:USER}",
-		"REPOSITORY_HOST_PATH": "${localWorkspaceFolder}"
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"USERNAME": "${localEnv:USER}",
+			"USER_UID": "1000",
+			"USER_GID": "1000"
+		}
 	},
 	"customizations": {
 		"vscode": {
@@ -17,7 +17,10 @@
 			"extensions": [
 				"ms-vscode.cpptools",
 				"fireblackhat.conan-tools",
-				"mshr-h.veriloghdl"]
+				"mshr-h.veriloghdl"],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			}
 		}
 	}
 
