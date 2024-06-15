@@ -12,7 +12,7 @@
 				"ms-vscode.cpptools",
 				"mshr-h.veriloghdl"],
 			"settings": {
-				"terminal.integrated.defaultProfile.linux": "dash"
+				"terminal.integrated.defaultProfile.linux": "bash"
 			}
 		}
 	}
