@@ -25,7 +25,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      nano \
      vim \
      libtinfo5 \
-     ca-certificates
+     ca-certificates \
+     tzdata
 
 # Create the user
  RUN if getent passwd $USER_UID > /dev/null; then userdel -r $(getent passwd $USER_UID | cut -d ':' -f 1); fi \ 
@@ -38,6 +39,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
+# This script installs the ptlnx environment package dependencies
+ADD ../scripts/plnx-env-setup.sh /tmp/plnx-env-setup.sh
+RUN ./tmp/plnx-env-setup.sh
 USER $USERNAME
 
-WORKDIR /home/$USERNAME
+WORKDIR /home/${USERNAME}
