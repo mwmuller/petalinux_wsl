@@ -26,7 +26,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      vim \
      libtinfo5 \
      ca-certificates \
-     tzdata
+     tzdata \
+     xinetd \
+     update-inetd \
+     tftpd \
+     tftp
 
 # Create the user
  RUN if getent passwd $USER_UID > /dev/null; then userdel -r $(getent passwd $USER_UID | cut -d ':' -f 1); fi \ 
