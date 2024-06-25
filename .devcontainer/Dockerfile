@@ -10,17 +10,19 @@ ENV USERNAME=${USERNAME}
 USER root
 
 ENV \
-     LANG=C.UTF-8 \
-     LC_ALL=C.UTF-8 \
-     # some packages will require this to be set. You can change this a rebuild
-     # the image is needed
-     TZ="America/Detroit"
+     LANG=en_US.UTF-8 \
+     LC_ALL=en_US.UTF-8 \
+          #some packages will require this to be set. You can change this a rebuild
+          #the image is needed
+     TZ="America/Detroit" \
+     LANGUAGE=en_US.UTF-8
 
 # Installing majority of packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      && apt-get -y install --no-install-recommends \
      git \
      xdg-utils \
+     locales \
      sudo \
      nano \
      vim \
@@ -30,8 +32,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      xinetd \
      update-inetd \
      tftpd \
-     tftp
+     tftp \
+     apt-utils \
+     less
 
+RUN locale-gen en_US.UTF-8
 # Create the user
  RUN if getent passwd $USER_UID > /dev/null; then userdel -r $(getent passwd $USER_UID | cut -d ':' -f 1); fi \ 
     && groupadd --force --gid $USER_GID $USERNAME \
