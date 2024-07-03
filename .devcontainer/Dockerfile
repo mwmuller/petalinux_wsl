@@ -7,34 +7,12 @@ ARG USERNAME
 ARG USER_UID
 ARG USER_GID
 ENV USERNAME=${USERNAME}
+
 USER root
 
-ENV \
-     LANG=en_US.UTF-8 \
-     LC_ALL=en_US.UTF-8 \
-          #some packages will require this to be set. You can change this a rebuild
-          #the image is needed
-     TZ="America/Detroit" \
-     LANGUAGE=en_US.UTF-8
-
-# Installing majority of packages
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-     && apt-get -y install --no-install-recommends \
-     git \
-     xdg-utils \
-     locales \
-     sudo \
-     nano \
-     vim \
-     libtinfo5 \
-     ca-certificates \
-     tzdata \
-     xinetd \
-     update-inetd \
-     tftpd \
-     tftp \
-     apt-utils \
-     less
+# Installing majority of packages (Add more packages here if needed and uncomment this section)
+#RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends \
 
 RUN locale-gen en_US.UTF-8
 # Create the user
@@ -48,9 +26,6 @@ RUN locale-gen en_US.UTF-8
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# This script installs the ptlnx environment package dependencies
-ADD ../scripts/plnx-env-setup.sh /tmp/plnx-env-setup.sh
-RUN ./tmp/plnx-env-setup.sh
 USER $USERNAME
 
 WORKDIR /home/${USERNAME}

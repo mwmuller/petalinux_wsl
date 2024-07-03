@@ -1,7 +1,10 @@
 #!/bin/bash
+# Ensure SHELL is set to /bin/bash
+export SHELL=/bin/bash
 
+# Optionally add /bin/bash to your PATH, if needed
+export PATH=/bin/bash:$PATH
 # Running the petalinux sh from support.xilinx.com/s/article/73296
-CREATE_INSTALL="true"
 ROOT_DIR=$(pwd)
 # Default values
 PETALINUX_INSTALLER="petalinux-v2019.2-final-installer.run"
@@ -17,15 +20,13 @@ while getopts ":v:p:" opt; do
 done
 
 if [[ -d "$PETALINUX" ]]; then
-    echo "$PETALINUX Folder alredy created do you want to delete it and re-install? [y/n]"
+    echo "$PETALINUX Folder already created do you want to delete it? [y/n]"
     read SELECTION
     if [[ "$SELECTION" == "y" ]]; then
-        CREATE_INSTALL="true"
         echo "Removing tools folder"
         rm -rf "$PETALINUX"
     else
-        echo "Exitting..."
-        exit 1
+        echo "Continuing installing process with non-empty directory..."
     fi
 fi
 
@@ -50,5 +51,18 @@ fi
 export PETALINUX # export for script env
 "$ROOT_DIR"/"$PETALINUX_INSTALLER" "$PETALINUX"
 
-source ./"$PETALINUX"/settings.sh
+
+PETALINUX_SETTINGS="$PETALINUX"/settings.sh
+SETTINGS_CHMOD_X="$(test -x $PETALINUX_SETTINGS && echo "true" || echo "false")"
+# No need to chmod if bit already set
+if [[ "${SETTINGS_CHMOD_X}" == "false" ]]; then
+    chmod +x ${PETALINUX_SETTINGS}
+    echo -e "\e[33mSetting executable bit for settings.sh.\n\e[0m"
+else
+    echo "Installer executable bit already set."
+fi
+
+export DEBIAN_FRONTEND=dialog
+sudo dpkg-reconfigure dash
+source "$PETALINUX_SETTINGS"
 

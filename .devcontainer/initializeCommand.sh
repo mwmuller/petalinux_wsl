@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ROOT_DIR_PATH=$(git rev-parse --show-toplevel)
-DOCKER_IMAGE="ubuntu:18.04"
+DOCKER_IMAGE="darknessoup/petalinux-2019.2:20240703_1" # Add petalinux image from dockerhub here
 
 # ensure user and Ids are correct
 USER=${USER:-${whoami}}
