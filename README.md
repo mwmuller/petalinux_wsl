@@ -13,10 +13,15 @@ Before you can run the required scripts and tools you'll need to reopen your env
 ### Note:
     !!!This process needs to be done each time you want to use the devcontainer!!!
 1) In the bottom left of vc-code you can click the "><" -> ```Connect to WSL``` -> Select the ```petalinx-wsl``` folder <br />
-    - Alternativly ```ctrl + shift + p``` -> ```Connect to WSL```
+    - Alternativly ```ctrl + shift + p``` -> ```Connect to WSL``` <br />
+![Opening repo WSL ](./.devcontainer/readmeImages/openWSL.PNG)
+    - Select the proper repository for WSL <br />
+![Opening repo WSL ](./.devcontainer/readmeImages/openFolderWSL.PNG)
 
 2) In the bottom left of vc-code you can click the "><" -> ```Dev-container > Reopen in container``` <br />
     - ```ctrl + shift + p``` -> ```Dev-container: Reopen in container```
+    - If you make changes to the dockerfile, it's recommended to use ```Dev-containter: Rebuild Without Cache and Reopen in Container``` <br />
+![Opening Dev Container](./.devcontainer/readmeImages/openContainer.PNG)
 
 - To open a new ```bash``` terminal you can use the key-bind ```ctrl + shift + ` ```
 
@@ -36,3 +41,11 @@ There are ```2``` instances during installation where user input is required:
 
 ### Troubleshooting/Help
 1) Here is the link to the 2019.2 Petalinux installation guide: https://docs.amd.com/v/u/2019.2-English/ug1144-petalinux-tools-reference-guide
+
+
+### Low Disk Storage
+1) If you make changes to the dockerfiles or rebuild multiple times you may acquire an excess of images, view them with ```docker images```
+![Docker Images](./.devcontainer/readmeImages/DockerImageSize.PNG)
+- These are the **required** images
+2) Any additional **old** images can be safely removed with ```docker image prune```
+3) If you have extra images outside the ones above, you can force remove them with ```docker image rm <imageID> -f```
