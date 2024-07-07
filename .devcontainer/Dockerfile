@@ -11,8 +11,9 @@ ENV USERNAME=${USERNAME}
 USER root
 
 # Installing majority of packages (Add more packages here if needed and uncomment this section)
-#RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends \
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+     && apt-get -y install --no-install-recommends \
+     rsync
 
 RUN locale-gen en_US.UTF-8
 # Create the user

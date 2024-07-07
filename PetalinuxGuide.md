@@ -1,0 +1,16 @@
+- Go to the shared folder in Linux and copy the .XSA file and paste it into the petalinux-tools folder.
+- ```Petalinux-create –-type project –-template zynq –-name LinuxDemo```
+- ```cd LinuxDemo```
+- ```petalinux-config –get-hw-description=/home/dmhanna/Downloads/petalinux-tools```
+- ```petalinux-config -c kernel```
+- Look for a second tab to appear on the terminal window (linux-xlnx Configuration)
+- ```Petalinux-config -c u-boot```
+- Look for a second tab to appear on the terminal window (u-boot-xlnx Configuration)
+- 
+- Boot media – enable QSPI Flash and SD/EMMC (two choices) by pressing Y over each of them.
+- Exit and Save
+- ```Petalinux-config -c rootfs```
+- Apps – enable gpio-demo and peekpoke. Exit and Save
+- ```Petalinux-build```
+- (this takes awhile ~15 minutes, but if you change a config and build again, it will do incremental builds
+and will be faster for successive builds)

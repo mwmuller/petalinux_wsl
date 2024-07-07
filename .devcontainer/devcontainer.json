@@ -4,6 +4,10 @@
 	"name": "Petalinux",
 	"image": "petalinux-${localEnv:USER}",
 	"initializeCommand": "${localWorkspaceFolder}/.devcontainer/initializeCommand.sh",
+	"postStartCommand": "sudo ln -sf /bin/bash /bin/sh",
+	"containerEnv": {
+		"SHELL": "/bin/bash"
+	},
 	"customizations": {
 		"vscode": {
 			// Feel free to add more extensions here. 
