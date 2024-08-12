@@ -4,7 +4,7 @@ ROOT_DIR_PATH=$(git rev-parse --show-toplevel)
 DOCKER_IMAGE="darknessoup/petalinux-2019.2:20240703_1" # Add petalinux image from dockerhub here
 
 # ensure user and Ids are correct
-USER=${USER:-${whoami}}
+USER=$(whoami)
 
 DEV_CONTAINER_FOLDER="${ROOT_DIR_PATH}/.devcontainer"
 export DOCKER_IMAGE_NAME="petalinux-${USER}"
