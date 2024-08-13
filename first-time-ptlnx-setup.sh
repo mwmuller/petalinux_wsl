@@ -62,7 +62,7 @@ else
     echo "Installer executable bit already set."
 fi
 
-export DEBIAN_FRONTEND=dialog
-sudo dpkg-reconfigure dash
+# export DEBIAN_FRONTEND=dialog
+# sudo dpkg-reconfigure dash
 source "$PETALINUX_SETTINGS"
 

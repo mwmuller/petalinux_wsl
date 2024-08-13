@@ -39,6 +39,10 @@ There are ```2``` instances during installation where user input is required:
 - Petalinux installation
 **Enter ```q``` to exit ```eula.txt``` when it pops up and type ```y```**
 
+### Download BSP
+1) You'll need to download the specific BSP for your board.
+2) This can be found here: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html -> **2019.2**
+
 ### Troubleshooting/Help
 1) Here is the link to the 2019.2 Petalinux installation guide: https://docs.amd.com/v/u/2019.2-English/ug1144-petalinux-tools-reference-guide
 

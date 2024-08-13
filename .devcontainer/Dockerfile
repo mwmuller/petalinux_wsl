@@ -1,4 +1,4 @@
-ARG DOCKER_IMAGE
+ARG DOCKER_IMAGE="darknessoup/petalinux-2019.2:20240703_1"
 
 FROM ${DOCKER_IMAGE}
 RUN apt-get update
@@ -13,9 +13,12 @@ USER root
 # Installing majority of packages (Add more packages here if needed and uncomment this section)
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      && apt-get -y install --no-install-recommends \
-     rsync
+     rsync \
+     x11-apps \
+     openssh-server
 
 RUN locale-gen en_US.UTF-8
+
 # Create the user
  RUN if getent passwd $USER_UID > /dev/null; then userdel -r $(getent passwd $USER_UID | cut -d ':' -f 1); fi \ 
     && groupadd --force --gid $USER_GID $USERNAME \

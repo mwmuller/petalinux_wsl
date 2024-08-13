@@ -4,7 +4,8 @@
 	"name": "Petalinux",
 	"image": "petalinux-${localEnv:USER}",
 	"initializeCommand": "${localWorkspaceFolder}/.devcontainer/initializeCommand.sh",
-	"postStartCommand": "sudo ln -sf /bin/bash /bin/sh",
+	"postStartCommand": "./.devcontainer/postStartCommand.sh",
+	"postAttachCommand": "source ~/.bashrc",
 	"containerEnv": {
 		"SHELL": "/bin/bash"
 	},
