@@ -49,7 +49,7 @@ fi
 
 # Shell is currently in petalinux-tools folder.
 export PETALINUX # export for script env
-"$ROOT_DIR"/"$PETALINUX_INSTALLER" "$PETALINUX"
+SKIP_LICENSE=y "$ROOT_DIR"/"$PETALINUX_INSTALLER" "$PETALINUX"
 
 
 PETALINUX_SETTINGS="$PETALINUX"/settings.sh

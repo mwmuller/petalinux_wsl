@@ -16,3 +16,5 @@ if [[ -d "${PETALINUX_DIR}" ]]; then
 else
     echo "Petalinux Tools not yet created. Sourcing 'settings.sh' failed."
 fi
+
+export PATH="${PETALINUX_DIR}":$PATH

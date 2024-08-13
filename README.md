@@ -39,7 +39,7 @@ There are ```2``` instances during installation where user input is required:
 - Petalinux installation
 **Enter ```q``` to exit ```eula.txt``` when it pops up and type ```y```**
 
-### Download BSP
+### Download BSP (If no XSA file)
 1) You'll need to download the specific BSP for your board.
 2) This can be found here: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html -> **2019.2**
 
@@ -53,3 +53,7 @@ There are ```2``` instances during installation where user input is required:
 - These are the **required** images
 2) Any additional **old** images can be safely removed with ```docker image prune```
 3) If you have extra images outside the ones above, you can force remove them with ```docker image rm <imageID> -f```
+
+
+## Using petalinux commands
+1) Reference the [Petalinux Guide](PetalinuxGuide.md) for creating, configuring, building your project

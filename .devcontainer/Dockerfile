@@ -15,7 +15,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
      && apt-get -y install --no-install-recommends \
      rsync \
      x11-apps \
-     openssh-server
+     openssh-server \
+     tftpd-hpa
+
+RUN  mkdir -p /tftpboot && chmod 755 /tftpboot \
+     && sed -i 's/TFTP\_USERNAME\=\"tftp\"/TFTP\_USERNAME\=\"petalinux\"/g' /etc/default/tftpd-hpa 
 
 RUN locale-gen en_US.UTF-8
 
