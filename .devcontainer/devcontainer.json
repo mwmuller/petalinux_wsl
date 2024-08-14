@@ -15,7 +15,9 @@
 			// Extension identifiers can be found on the right side of an extension page
 			"extensions": [
 				"ms-vscode.cpptools",
-				"mshr-h.veriloghdl"], 
+				"mshr-h.veriloghdl",
+				"ms-python.python",
+				"ms-python.debugpy"], 
 			"settings": {
 				"terminal.integrated.defaultProfile.linux": "bash"
 			}

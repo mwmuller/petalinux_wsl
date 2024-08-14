@@ -66,3 +66,4 @@ fi
 # sudo dpkg-reconfigure dash
 source "$PETALINUX_SETTINGS"
 
+mv ${ROOT_DIR}/scripts/deploy.py ${PETALINUX}/etc/scripts_py/deploy.py
